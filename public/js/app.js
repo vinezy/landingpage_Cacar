@@ -3,6 +3,32 @@
 
 class App{
 	constructor(){
+		this.media = [
+			{
+				"img" : "http://lorempixel.com/580/250/nature/1",
+				"alignment" : "center-align",
+				"caption": "asdfasdfasdfa",
+				"slogan": "asdfasdasdfasdfasdfasdfasdf"
+			},
+			{
+				"img" : "http://lorempixel.com/580/250/nature/2",
+				"alignment" : "left-align",
+				"caption": "asdfasdfasdfa",
+				"slogan": "asdfasdasdfasdfasdfasdfasdf"
+			},
+			{
+				"img" : "http://lorempixel.com/580/250/nature/3",
+				"alignment" : "right-align",
+				"caption": "asdfasdfasdfa",
+				"slogan": "asdfasdasdfasdfasdfasdfasdf"
+			},
+			{
+				"img" : "http://lorempixel.com/580/250/nature/4",
+				"alignment" : "center-align",
+				"caption": "asdfasdfasdfa",
+				"slogan": "asdfasdasdfasdfasdfasdfasdf"
+			}
+		];
 	}
 	render(html, component){
 
@@ -20,10 +46,62 @@ class Component extends App{
 
 		super();
 	}
+
+	ukayLayout(){
+		let html = `
+			 <nav>
+			    <div class="nav-wrapper blue darken-4">
+			      <a href="#" class="brand-logo yellow-text ">UKAY</a>
+			      <ul id="nav-mobile" class="right hide-on-med-and-down">
+			        <li><a href="#">Items</a></li>
+			        <li><a href="#">Cart</a></li>
+			        <li><a href="#">New</a></li>
+			      </ul>
+			    </div>
+			  </nav>
+
+
+			  <div class="slider">
+			    <ul class="slides">
+
+			    `;
+
+			   for(let i=0;i<this.media.length;i++){
+					html += `
+					      <li>
+					        <img src="${this.media[i].img}"> <!-- random image -->
+					        <div class="caption ${this.media[i].alignment}">
+					          <h3>${this.media[i].caption}</h3>
+					          <h5 class="light grey-text text-lighten-3">${this.media[i].slogan}</h5>
+					        </div>
+					      </li>
+					    
+					 `;
+					}
+
+
+			 html += `
+
+					</ul>
+				  </div>
+				<footer class="page-footer blue darken-4">		          
+		          <div class="footer-copyright">
+		            <div class="container">
+		            © 2014 Copyright Text
+		            <a class="grey-text text-lighten-4 right" href="#!">Another decode app</a>
+		            </div>
+		          </div>
+		        </footer>			  
+		`;
+
+		this.reRender(`
+			${html}
+			`,document.getElementById("app"));
+	}
 }
 
 let component = new Component();
-
+component.ukayLayout();
 
 
 
